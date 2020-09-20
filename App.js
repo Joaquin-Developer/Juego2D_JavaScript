@@ -11,13 +11,28 @@ ctx.fill();     // pintar cuadrado
 ctx.closePath();    // fin declaraciones de objeto
 */
 
-function draw() {
+var x = canvas.width / 2;
+var y = canvas.height - 30;
+var dx = 2;
+var dy = -2;
+
+function drawBola() {
     ctx.beginPath();
-    ctx.arc(50, 50, 10, 0, Math.PI*2);
+    ctx.arc(x, y, 10, 0, Math.PI*2);
     ctx.fillStyle = "#0095DD";
     ctx.fill();
     ctx.closePath();
 }
+
+function draw() {
+    // borro contenido de lienzo antes de dijubar denuevo:
+    ctx.clearRect(0, 0, canvas.width, canvas.height);   
+    drawBola();
+    // invremento posiciones x,y en 2, -2 :
+    x += dx;
+    y += dy;
+}
 setInterval(draw, 10);  // cada 10ms
+
 
 
