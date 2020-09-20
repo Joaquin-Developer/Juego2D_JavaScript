@@ -16,10 +16,42 @@ var y = canvas.height - 30;
 var dx = 2;
 var dy = -2;
 var radioCirculo = 10;
+var paddleHeight = 10;
+var paddleWidth = 75;
+var paddleX = (canvas.width-paddleWidth)/2;
+var teclaDerechaPulsada = false;
+var teclaIzquierdaPulsada = false;
+
+/* escucha de eventos para capturar tecla pulsada */
+document.addEventListener("keydown", keyDownHandler, false);
+document.addEventListener("keyup", keyUpHandler, false);
+
+function keyDownHandler(e) {
+    if (e.keyCode == 39) 
+        teclaDerechaPulsada = true;
+    else if (e.keyCode == 37) 
+        teclaIzquierdaPulsada = true;
+}
+
+function keyUpHandler(e) {
+    if (e.keyCode == 39) 
+        teclaDerechaPulsada = false;
+    else if (e.keyCode == 37) 
+        teclaIzquierdaPulsada = true;
+}
+
 
 function drawBola() {
     ctx.beginPath();
     ctx.arc(x, y, radioCirculo, 0, Math.PI*2);
+    ctx.fillStyle = "#0095DD";
+    ctx.fill();
+    ctx.closePath();
+}
+
+function drawPaddle() {
+    ctx.beginPath();
+    ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
     ctx.fillStyle = "#0095DD";
     ctx.fill();
     ctx.closePath();
@@ -34,6 +66,13 @@ function draw() {
 
     if (y + dy > (canvas.height - radioCirculo) || y + dy < radioCirculo) 
         dy = -dy;
+
+    if ((teclaDerechaPulsada && paddleX) < (canvas.width - paddleWidth)) {
+        paddleX += 7;
+    }
+    else if ((teclaIzquierdaPulsada && paddleX) > 0) {
+        paddleX -= 7;
+    }    
     // invremento posiciones x,y en 2, -2 :
     x += dx;
     y += dy;
