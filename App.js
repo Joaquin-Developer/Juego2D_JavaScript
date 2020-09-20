@@ -72,6 +72,7 @@ function draw() {
             dy = -dy;
         } else {
             alert("¡Fin del Juego!");
+            reiniciar();
             document.location.reload();
         }
     }
@@ -87,5 +88,18 @@ function draw() {
 }
 setInterval(draw, 10);  // cada 10ms
 
+function reiniciar() {
+    x = canvas.width / 2;
+    y = canvas.height - 30;
+    dx = 2;
+    dy = -2;
+    radioCirculo = 10;
+    paddleHeight = 10;
+    paddleWidth = 75;
+    paddleX = (canvas.width-paddleWidth)/2;
+    teclaDerechaPulsada = false;
+    teclaIzquierdaPulsada = false;
+    alert("El juego comenzará de nuevo.");
+}
 
 
