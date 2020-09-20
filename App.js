@@ -37,9 +37,8 @@ function keyUpHandler(e) {
     if (e.keyCode == 39) 
         teclaDerechaPulsada = false;
     else if (e.keyCode == 37) 
-        teclaIzquierdaPulsada = true;
+        teclaIzquierdaPulsada = false;
 }
-
 
 function drawBola() {
     ctx.beginPath();
@@ -51,7 +50,7 @@ function drawBola() {
 
 function drawPaddle() {
     ctx.beginPath();
-    ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
+    ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
     ctx.fillStyle = "#0095DD";
     ctx.fill();
     ctx.closePath();
@@ -61,19 +60,19 @@ function draw() {
     // borro contenido de lienzo antes de dijubar denuevo:
     ctx.clearRect(0, 0, canvas.width, canvas.height);   
     drawBola();
+    drawPaddle();
     if (x + dx > (canvas.width - radioCirculo) || x + dx < radioCirculo) 
         dx = -dx;
 
     if (y + dy > (canvas.height - radioCirculo) || y + dy < radioCirculo) 
         dy = -dy;
 
-    if ((teclaDerechaPulsada && paddleX) < (canvas.width - paddleWidth)) {
+    if ((teclaDerechaPulsada && paddleX) < (canvas.width - paddleWidth)) 
         paddleX += 7;
-    }
-    else if ((teclaIzquierdaPulsada && paddleX) > 0) {
+    else if ((teclaIzquierdaPulsada && paddleX) > 0) 
         paddleX -= 7;
-    }    
-    // invremento posiciones x,y en 2, -2 :
+    
+        // invremento posiciones x,y en 2, -2 :
     x += dx;
     y += dy;
 }

@@ -5,9 +5,14 @@
 }
 
 canvas {
-    background: #578b94;
+    background: #b2bec0;
     display: block; 
     margin: 0 auto;
 }
 
+#container {
+    width: 480;
+    height: 320;
+    border: 5px solid black";
+}
 
