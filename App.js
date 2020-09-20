@@ -61,11 +61,20 @@ function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);   
     drawBola();
     drawPaddle();
+
     if (x + dx > (canvas.width - radioCirculo) || x + dx < radioCirculo) 
         dx = -dx;
 
-    if (y + dy > (canvas.height - radioCirculo) || y + dy < radioCirculo) 
+    if ((y + dy) < radioCirculo) {
         dy = -dy;
+    } else if (y + dy > (canvas.height - radioCirculo)) {
+        if (x > paddleX && x < paddleX + paddleWidth) {
+            dy = -dy;
+        } else {
+            alert("¡Fin del Juego!");
+            document.location.reload();
+        }
+    }
 
     if ((teclaDerechaPulsada && paddleX) < (canvas.width - paddleWidth)) 
         paddleX += 7;
