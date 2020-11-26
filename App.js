@@ -1,7 +1,7 @@
 
 // referencia a nuestro objeto canvas de html:
-var canvas = document.getElementById('game');
-var ctx = canvas.getContext("2d");       // contexto de graficos 2d
+const canvas = document.getElementById('game');
+const ctx = canvas.getContext("2d");       // contexto de graficos 2d
 
 /* dibujar un cuadrado rojo: 
 ctx.beginPath();    // inicio declaraciones de objeto
@@ -11,16 +11,16 @@ ctx.fill();     // pintar cuadrado
 ctx.closePath();    // fin declaraciones de objeto
 */
 
-var x = canvas.width / 2;
-var y = canvas.height - 30;
-var dx = 2;
-var dy = -2;
-var radioCirculo = 10;
-var paddleHeight = 10;
-var paddleWidth = 75;
-var paddleX = (canvas.width-paddleWidth)/2;
-var teclaDerechaPulsada = false;
-var teclaIzquierdaPulsada = false;
+let x = canvas.width / 2;
+let y = canvas.height - 30;
+let dx = 2;
+let dy = -2;
+let radioCirculo = 10;
+let paddleHeight = 10;
+let paddleWidth = 75;
+let paddleX = (canvas.width-paddleWidth)/2;
+let teclaDerechaPulsada = false;
+let teclaIzquierdaPulsada = false;
 
 /* escucha de eventos para capturar tecla pulsada */
 document.addEventListener("keydown", keyDownHandler, false);
